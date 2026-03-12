@@ -1,0 +1,19 @@
+class Solution {
+    public int tri(int arr[], int n){
+        if(n==0){
+            return 0;
+        }
+        if(n==1 || n==2){
+            return 1;
+        }
+        if(arr[n] != -1) {
+            return arr[n];
+        }
+        return arr[n] = tri(arr, n-1) + tri(arr, n-2) + tri(arr, n-3);
+    }
+    public int tribonacci(int n) {
+        int arr[] = new int[38];
+        Arrays.fill(arr, -1);
+        return tri(arr, n);
+    }
+}
