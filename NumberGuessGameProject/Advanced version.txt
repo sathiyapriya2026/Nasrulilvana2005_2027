@@ -1,0 +1,61 @@
+import random
+
+def choose_difficulty():
+    print("\nChoose Difficulty Level:")
+    print("1. Easy (1-50, 10 attempts)")
+    print("2. Medium (1-100, 7 attempts)")
+    print("3. Hard (1-200, 5 attempts)")
+
+    while True:
+        choice = input("Enter choice (1/2/3): ")
+        if choice == '1':
+            return 50, 10
+        elif choice == '2':
+            return 100, 7
+        elif choice == '3':
+            return 200, 5
+        else:
+            print("Invalid choice. Try again.")
+
+def play_game():
+    max_range, attempts = choose_difficulty()
+    number = random.randint(1, max_range)
+    score = attempts * 10
+
+    print(f"\nI have selected a number between 1 and {max_range}")
+    print(f"You have {attempts} attempts. Good luck!\n")
+
+    for i in range(attempts):
+        try:
+            guess = int(input(f"Attempt {i+1}: Enter your guess: "))
+        except ValueError:
+            print("Please enter a valid number!")
+            continue
+
+        if guess == number:
+            print("\n🎉 Correct! You guessed the number!")
+            print(f"Your score: {score}")
+            return
+
+        elif guess < number:
+            print("Too low ⬇️")
+        else:
+            print("Too high ⬆️")
+
+        score -= 10
+
+    print(f"\n😢 Game Over! The number was {number}")
+
+def main():
+    print("🎮 Welcome to Number Guessing Game 🎮")
+
+    while True:
+        play_game()
+
+        again = input("\nDo you want to play again? (yes/no): ").lower()
+        if again != 'yes':
+            print("Thanks for playing! 👋")
+            break
+
+if __name__ == "__main__":
+    main()
