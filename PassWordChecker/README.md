@@ -18,4 +18,4 @@ This is a simple Java project that checks the strength of a password.
    javac PasswordChecker.java
 2. Run the program:
    java PasswordChecker
-3. Enter a password and check its strength# Nasrulilvana2005_2027
+3. Enter a password and check its strength
